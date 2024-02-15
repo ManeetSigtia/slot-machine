@@ -25,6 +25,10 @@ const SYMBOL_VALUES = {
     D: 2
 }
 
+/**
+ * Function to prompt the user to enter a deposit amount.
+ * @returns {number} The deposit amount entered by the user.
+ */
 const deposit = () => {
     while (true) {
         const depositAmount = prompt("Enter a deposit amount: ");
@@ -38,6 +42,10 @@ const deposit = () => {
     }
 }
 
+/**
+ * Function to prompt the user to enter the number of lines to bet on.
+ * @returns {number} The number of lines to bet on entered by the user.
+ */
 const getNumberOfLines = () => {
     while (true) {
         const lines = prompt("Enter the number of lines to bet on (1-3): ");
@@ -51,6 +59,12 @@ const getNumberOfLines = () => {
     }
 }
 
+/**
+ * Function to prompt the user to enter the bet per line.
+ * @param {number} balance - The current balance of the player.
+ * @param {number} lines - The number of lines the player is betting on.
+ * @returns {number} The bet per line entered by the user.
+ */
 const getBet = (balance, lines) => {
     while (true) {
         const bet = prompt("Enter the bet per line: ");
@@ -64,7 +78,10 @@ const getBet = (balance, lines) => {
     }
 }
 
-
+/**
+ * Function to simulate the spinning of the reels.
+ * @returns {string[][]} An array representing the symbols on the reels after spinning.
+ */
 const spin = () => {
     const symbols = [];
     for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
@@ -88,6 +105,11 @@ const spin = () => {
     return reels;
 }
 
+/**
+ * Function to transpose the reels array.
+ * @param {string[][]} reels - An array representing the symbols on the reels.
+ * @returns {string[][]} An array representing the symbols on the reels after transposing.
+ */
 const transpose = (reels) => {
     const rows = [];
 
@@ -101,6 +123,10 @@ const transpose = (reels) => {
     return rows;
 }
 
+/**
+ * Function to print the rows of symbols.
+ * @param {string[][]} rows - An array representing the rows of symbols.
+ */
 const printRows = (rows) => {
     for (const row of rows) {
         let rowString = "";
@@ -114,6 +140,13 @@ const printRows = (rows) => {
     }
 }
 
+/**
+ * Function to calculate the player's winnings.
+ * @param {string[][]} rows - An array representing the rows of symbols.
+ * @param {number} bet - The bet per line.
+ * @param {number} lines - The number of lines the player bet on.
+ * @returns {number} The total winnings of the player.
+ */
 const getWinnings = (rows, bet, lines) => {
     let winnings = 0;
     for (let row = 0; row < lines; row++) {
@@ -135,6 +168,9 @@ const getWinnings = (rows, bet, lines) => {
     return winnings;
 }
 
+/**
+ * Function to start the game.
+ */
 const game = () => {
     let balance = deposit();
 
@@ -164,5 +200,3 @@ const game = () => {
 }
 
 game();
-
-
